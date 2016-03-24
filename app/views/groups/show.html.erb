@@ -1,23 +1,27 @@
 <div class="col-md-12">
   <div>
     <%= link_to("Edit Group", edit_group_path(@group), class: "btn btn-default pull-right")%>
+    <%= link_to("Add Post", new_group_post_path(@group), class: "btn btn-default pull-right")%>
   </div>
   <h2>
     <%= @group.title %>
   </h2>
   <p><%= @group.body %> </p>
-    <table class="table table-hover">
+    <table class="table">
       <thead>
-        <th>#</th>
-        <th>Title</th>
-        <th>Description</th>
+        <tr>
+          <th>Content</th>
+          <th colspan="2"></th>
+        </tr>
       </thead>
       <tbody>
-        <%= simple_form_for @group do |f| %>
+        <% @posts.each do |post| %>
           <tr>
-            <td>#</td>
-            <td></td>
-            <td></td>
+            <td><%= post.content %></td>
+            <td>
+              <%= link_to("edit", edit_group_post_path(post.group, post), class: "btn btn-default")%>
+              <%= link_to("Remove", group_post_path(post.group, post), method: :delete, data: {confirm: "Sure?"}, class: "btn btn-default")%> </td>
+            </td>
           </tr>
         <% end %>
       </tbody>
