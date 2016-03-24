@@ -1,0 +1,25 @@
+<div class="col-md-12">
+  <div>
+    <%= link_to("Edit Group", edit_group_path(@group), class: "btn btn-default pull-right")%>
+  </div>
+  <h2>
+    <%= @group.title %>
+  </h2>
+  <p><%= @group.body %> </p>
+    <table class="table table-hover">
+      <thead>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <%= simple_form_for @group do |f| %>
+          <tr>
+            <td>#</td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

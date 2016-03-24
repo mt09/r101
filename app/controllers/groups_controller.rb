@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
 
     if @group.save
       redirect_to groups_path
+      flash[:notice] = "Group created"
     else
       render :new
     end
@@ -31,10 +32,15 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+    @group = Group.find(params[:id])
+  end
+
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
     redirect_to groups_path
+    flash[:alert] = "Group has been removed"
   end
 
   private
