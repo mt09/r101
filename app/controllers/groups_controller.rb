@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
     @group = current_user.groups.new(group_params)
 
     if @group.save
+      current_user.join!(@group)
       redirect_to groups_path
       flash[:notice] = "Group created"
     else
@@ -55,13 +56,13 @@ class GroupsController < ApplicationController
       flash[:warning] = "You've been member already."
     end
 
-    redirect_to groups_path(@group)
+    redirect_to group_path(@group)
   end
 
   def quit
     @group = Group.find(params[:id])
 
-    if current_user.is_member_of(@group)
+    if current_user.is_member_of?(@group)
       current_user.quit!(@group)
       flash[:alert] = "Hope to see you soon."
     else

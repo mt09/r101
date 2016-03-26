@@ -56,7 +56,7 @@ class PostsController < ApplicationController
   def member_required
     if !current_user.is_member_of?(@group)
       flash[:warning] = "Can't post, you're not member of group."
-      redirect_to gruop_path(@group)
+      redirect_to group_path(@group)
     end
   end
 end
