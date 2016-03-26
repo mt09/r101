@@ -10,5 +10,5 @@ class Group < ActiveRecord::Base
   end
 
   has_many :group_users
-  has_many :members, throught: :group_users, source: :group
+  has_many :members, through: :group_users, source: :group
 end
