@@ -52,4 +52,11 @@ class PostsController < ApplicationController
   def find_group
     @group = Group.find(params[:group_id])
   end
+
+  def member_required
+    if !current_user.is_member_of?(@group)
+      flash[:warning] = "Can't post, you're not member of group."
+      redirect_to gruop_path(@group)
+    end
+  end
 end

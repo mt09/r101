@@ -45,6 +45,32 @@ class GroupsController < ApplicationController
     flash[:alert] = "Group has been removed"
   end
 
+  def join
+    @group = Group.find(params[:id])
+
+    if !current_user.is_member_of?(@group)
+      current_user.join!(@group)
+      flash[:notice] = "Joined"
+    else
+      flash[:warning] = "You've been member already."
+    end
+
+    redirect_to groups_path(@group)
+  end
+
+  def quit
+    @group = Group.find(params[:id])
+
+    if current_user.is_member_of(@group)
+      current_user.quit!(@group)
+      flash[:alert] = "Hope to see you soon."
+    else
+      flash[:warning] = "Join us first."
+    end
+
+    redirect_to group_path(@group)
+  end
+
   private
 
   def group_params

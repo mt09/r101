@@ -8,9 +8,17 @@ class User < ActiveRecord::Base
   has_many :posts
 
   has_many :group_users
-  has_many :members, through: :group_users, source: :user
+  has_many :participated_groups, through: :group_users, source: :user
 
   def is_member_of?(group)
-    participated_group.include?(group)
+    participated_groups.include?(group)
+  end
+
+  def join!(group)
+    participated_groups << group
+  end
+
+  def quit!(group)
+    participated_groups.delete(group)
   end
 end
