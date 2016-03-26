@@ -12,3 +12,10 @@ o.name = "ww"
 o.password = "qwerasdf"
 o.password_confirmation = "qwerasdf"
 o.save
+
+p = User.new
+p.email = "q@q.com"
+p.name = "qq"
+p.password = "qwerasdf"
+p.password_confirmation = "qwerasdf"
+p.save
