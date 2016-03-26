@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   def create
 
     @post = @group.posts.build(post_params)
+    @post.author = current_user
 
     if @post.save
       redirect_to group_path(@group)
@@ -20,12 +21,12 @@ class PostsController < ApplicationController
 
   def edit
 
-    @post = @group.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def update
 
-    @post = @group.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
 
     if @post.update(post_params)
       redirect_to group_path(@group)
@@ -36,7 +37,7 @@ class PostsController < ApplicationController
 
   def destroy
 
-    @post = @group.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy
     redirect_to group_path(@group)
   end
