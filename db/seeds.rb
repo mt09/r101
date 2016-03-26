@@ -8,6 +8,7 @@
 
 o = User.new
 o.email = "w@w.com"
+o.name = "ww"
 o.password = "qwerasdf"
 o.password_confirmation = "qwerasdf"
 o.save
