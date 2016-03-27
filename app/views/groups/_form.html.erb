@@ -1,0 +1,8 @@
+  <%= simple_form_for @group do |f| %>
+    <div>
+      <%= f.input :title %>
+      <%= f.input :body %>
+    </div>
+    <%= f.submit "Save", class: "btn btn-default" %>
+    <%= link_to("Back", groups_path(@group), class: "btn btn-default") %>
+  <% end %>

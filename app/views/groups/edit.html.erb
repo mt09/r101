@@ -1,11 +1,4 @@
 <h1 class="text-center">Edit Group</h1>
 <div class="col-md-4 col-md-offset-4">
-  <%= simple_form_for @group do |f| %>
-    <div>
-      <%= f.input :title %>
-      <%= f.input :body %>
-    </div>
-    <%= f.submit "Save", class: "btn btn-default" %>
-    <%= link_to("Back", groups_path(@group), class: "btn btn-default") %>
-  <% end %>
+  <%= render "groups/form" %>
  </div>
